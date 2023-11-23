@@ -46,6 +46,82 @@ public class AddressBook {
         Contactlist.add(contacts);
     }
 
+//    it is a void function which is created to modify the
+    public void modifyContactByName(String firstName, String lastName) {
+        Scanner scanner = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
+        int option;
+        for (Contacts contact : Contactlist) {
+            //It will check for valid firstname and lastname
+            if (contact.getFirstName().equals(firstName) && contact.getLastName().equals(lastName)) {
+                System.out.println("1.Edit first name\n2.Edit last name\n"
+                        + "3.Edit Address\n4.Edit City\n5.Edit State\n6.Edit Zip\n7.Edit Phone no\n8.Edit email\n 9.Exit");
+                option = sc.nextInt();
+                switch (option) {
+                    case 1:
+                        System.out.println("Enter first name to edit");
+                        String FirstName = scanner.nextLine();
+                        contact.setFirstName(FirstName);
+                        break;
+                    case 2:
+                        System.out.println("Enter last name to edit");
+                        String LastName = scanner.nextLine();
+                        contact.setLastName(LastName);
+                        break;
+                    case 3:
+                        System.out.println("Enter address to edit");
+                        String address = scanner.nextLine();
+                        contact.setAddress(address);
+                        break;
+                    case 4:
+                        System.out.println("Enter city to edit");
+                        String city = scanner.nextLine();
+                        contact.setCity(city);
+                        break;
+
+                    case 5:
+                        System.out.println("Enter state to update");
+                        String state = scanner.nextLine();
+                        contact.setState(state);
+                        break;
+
+                    case 6:
+                        System.out.println("Enter zip code");
+                        int zip = sc.nextInt();
+                        contact.setZipcode(zip);
+                        break;
+
+                    case 7:
+                        System.out.println("Enter phone no to edit");
+                        String phone = sc.nextLine();
+                        contact.setPhoneNumber(phone);
+                        break;
+
+                    case 8:
+                        System.out.println("Enter email to edit");
+                        String email = scanner.nextLine();
+                        contact.setEmail(email);
+                        break;
+                    case 9:
+                        break;
+
+                    default:
+                        System.out.println("Please provide correct option");
+                        break;
+                }
+
+                System.out.println("Contact modified successfully.");
+                showContacts();
+
+            }
+            else
+            {
+                System.out.println("Contact not found.");
+            }
+        }
+
+    }
+
     //showContacts method is used to display
     private void showContacts()
     {
@@ -69,5 +145,13 @@ public class AddressBook {
         //called a method showContacts
         s1.showContacts();
 
+        Scanner scanner=new Scanner(System.in);
+        System.out.println("Enter First Name to Search");
+        String firstName = scanner.nextLine();
+        System.out.println("Enter Last Name To Search:");
+
+        String lastName = scanner.nextLine();
+
+        s1.modifyContactByName(firstName, lastName);
     }
 }
