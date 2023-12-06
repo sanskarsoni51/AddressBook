@@ -2,15 +2,16 @@ package BridgelabzAddressBook;
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class AddressBook {
 
-
+    // creating a list to store the contact details of a person
     private List<Contacts> Contactlist =new ArrayList<>();
 
     // addContactsFromUserInput To take a user input for contacts.
 
-//    Created a void function which helps us in taking input details from the user.
+    // @DESC :-Created a void function which helps us in taking input details from the user.
     public void addContactsFromUserInput() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter First Name:");
@@ -37,16 +38,18 @@ public class AddressBook {
         System.out.println("Enter Phone Number:");
         String phoneNumber = scanner.next();
 
-//        now pushing all the data into the list we made
+    //  now pushing all the data into the list we made
         Contacts newContact = new Contacts(firstName, lastName, address, city, state, zipcode, phoneNumber, email);
         addContacts(newContact);
     }
-    // addContacts method to add the items in the arraylist.
+    //@DESC: addContacts method to add the items in the arraylist.
     private void addContacts(Contacts contacts) {
         Contactlist.add(contacts);
     }
 
-//    it is a void function which is created to modify the
+    //@DESC: it is a void function which is created to modify the contact details
+    //@PARAMS: first name and last name are taken as params
+    //@RETURN: it does not return anything. it just updates the details
     public void modifyContactByName(String firstName, String lastName) {
         Scanner scanner = new Scanner(System.in);
         Scanner sc = new Scanner(System.in);
@@ -87,13 +90,13 @@ public class AddressBook {
 
                     case 6:
                         System.out.println("Enter zip code");
-                        int zip = sc.nextInt();
+                        int zip = scanner.nextInt();
                         contact.setZipcode(zip);
                         break;
 
                     case 7:
                         System.out.println("Enter phone no to edit");
-                        String phone = sc.nextLine();
+                        String phone = scanner.nextLine();
                         contact.setPhoneNumber(phone);
                         break;
 
@@ -122,7 +125,23 @@ public class AddressBook {
 
     }
 
-    //showContacts method is used to display
+    //@DESC: removeContacts() is used to remove from list.
+//    @PARAMS: it takes first name as the parameter to identify the person
+//    @return: does not return anything
+    public void removeContacts(String firstName1) {
+        Iterator<Contacts> iterator = Contactlist.iterator();
+        while (iterator.hasNext()) {
+            Contacts contact = iterator.next();
+            if (contact.getFirstName().equals(firstName1)) {
+                System.out.println("Contact deleted successfully");
+                iterator.remove();
+            } else {
+                System.out.println("Contact not found");
+            }
+        }
+    }
+
+    //@DESC: showContacts method is used to display
     private void showContacts()
     {
         for(Contacts contacts : Contactlist)
@@ -132,26 +151,71 @@ public class AddressBook {
         }
     }
 
+//    @DESC : main method
     public static void main(String[] args)
     {
         System.out.println("Welcome to Address Book Java Functionality ");
 
         System.out.println("we have added a class where we created the details ");
-        System.out.println("enter the details in the address book");
-
+//    We are creating a object of the AddressBook class
         AddressBook s1 = new AddressBook();
-        //Called a method addContactsFromUserInput
-        s1.addContactsFromUserInput();
-        //called a method showContacts
-        s1.showContacts();
 
-        Scanner scanner=new Scanner(System.in);
-        System.out.println("Enter First Name to Search");
-        String firstName = scanner.nextLine();
-        System.out.println("Enter Last Name To Search:");
+        Scanner s = new Scanner(System.in);
 
-        String lastName = scanner.nextLine();
+        boolean b = true;
+        int option;
 
-        s1.modifyContactByName(firstName, lastName);
+/*       we are starting a while loop so it will continue till we do not want our book to end and
+        will provide option everytime so that we can do different things        */
+
+        while(b){
+            System.out.println("1.Add a Contact\n2.Edit a Contact\n"
+                    + "3.delete a contact\n 4.Exit");
+            option = s.nextInt();
+            switch (option) {
+                case 1:
+                    System.out.println("enter the details in the address book");
+
+
+                    //Called a method addContactsFromUserInput
+                    s1.addContactsFromUserInput();
+                    //called a method showContacts
+                    s1.showContacts();
+                    break;
+
+                case 2:
+                    Scanner scanner = new Scanner(System.in);
+                    System.out.println("Enter First Name to Search");
+                    String firstName = scanner.nextLine();
+                    System.out.println("Enter Last Name To Search:");
+
+                    String lastName = scanner.nextLine();
+
+                    s1.modifyContactByName(firstName, lastName);
+                    break;
+
+                case 3:
+                    Scanner sc = new Scanner(System.in);
+                    System.out.println("Enter First Name to delete the contact");
+                    String firstName1 = sc.nextLine();
+                    //called a removeContacts with firstName
+                    s1.removeContacts(firstName1);
+
+                    //Displayed a contacts
+                    s1.showContacts();
+                    break;
+
+                case 4:
+                    b = false;
+
+                default:
+                    b = false;
+            }
+        }
+
+
+
+
+
     }
 }
