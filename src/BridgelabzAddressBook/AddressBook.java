@@ -157,7 +157,7 @@ public class AddressBook {
         System.out.println("Welcome to Address Book Java Functionality ");
 
         System.out.println("we have added a class where we created the details ");
-//    We are creating a object of the AddressBook class
+//    We are creating an object of the AddressBook class
         AddressBook s1 = new AddressBook();
 
         Scanner s = new Scanner(System.in);
@@ -165,7 +165,7 @@ public class AddressBook {
         boolean b = true;
         int option;
 
-/*       we are starting a while loop so it will continue till we do not want our book to end and
+/*       we are starting a while loop. it will continue till we do not want our book to end and
         will provide option everytime so that we can do different things        */
 
         while(b){
