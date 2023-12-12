@@ -11,7 +11,7 @@ public class Contacts {
     private String phoneNumber;
     private String email;
 
-//    it is a constructor function where we are assigning the values of the all the variables which we have declared
+    //    it is a constructor function where we are assigning the values of the all the variables which we have declared
     public Contacts(String firstName, String lastName, String address, String city, String state, int zipcode, String phoneNumber, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
