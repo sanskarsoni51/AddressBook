@@ -3,8 +3,7 @@ package BridgelabzAddressBook;
 import java.util.List;
 import java.util.Scanner;
 
-import static BridgelabzAddressBook.MultipleAddressBooks.AddressBookByName;
-import static BridgelabzAddressBook.MultipleAddressBooks.SearchByCity;
+import static BridgelabzAddressBook.MultipleAddressBooks.*;
 
 public class AddressBook extends CRUD {
 
@@ -22,7 +21,7 @@ public class AddressBook extends CRUD {
         boolean loop = true;
         while (loop) {
             System.out.println("1.Add a Address Book\n2.View a Address Book\n3.Edit a Address Book\n"
-                    + "4.delete a Address Book\n5.Search Contacts by City \n6.Exit");
+                    + "4.delete a Address Book\n5.Search Contacts by City\n6.Count Contacts by City\n7.Exit");
             int option1 = s.nextInt();
 
             switch (option1) {
@@ -77,6 +76,14 @@ public class AddressBook extends CRUD {
                     break;
 
                 case 6:
+                    Scanner scn = new Scanner(System.in);
+                    System.out.println("Enter City to Search");
+                    Name = scn.nextLine();
+                    long count = CountByCity(Name);
+                    System.out.println("There are " + count + " Person's in the city " + Name);
+                    break;
+
+                case 7:
                     loop = false;
                     break;
 

@@ -29,6 +29,14 @@ public class MultipleAddressBooks {
         }
         return l1;
     }
+    public static long CountByCity(String City){
+        long count = 0;
+        for(String i : AddressBookByName.keySet()){
+            ArrayList<Contacts> temp = AddressBookByName.get(i);
+            count = count + temp.stream().filter(contacts -> contacts.getCity().equals(City)).count();
+        }
+        return count;
+    }
 
 
 }
