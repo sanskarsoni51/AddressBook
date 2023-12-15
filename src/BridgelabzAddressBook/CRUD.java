@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 import static BridgelabzAddressBook.MultipleAddressBooks.AddressBookByName;
 
@@ -156,10 +157,10 @@ public class CRUD {
 
     public static void setContactList(String AddressBookName) {
         Scanner s = new Scanner(System.in);
-
+        Contactlist = new ArrayList<>();
         //    We are creating an object of the AddressBook class
         AddressBook s1 = new AddressBook();
-//        Contactlist.clear();
+        Contactlist.clear();
         boolean b = true;
         int option;
 
@@ -220,4 +221,11 @@ public class CRUD {
         System.out.println("Out of Address book");
 //        Contactlist.clear();
     }
+
+//    public static List<Contacts> SearchByCity(String City){
+//        for (:) {
+//
+//        }
+//        return Contactlist.stream().filter(contacts -> contacts.getCity().equals(City)).collect(Collectors.toList());
+//    }
 }

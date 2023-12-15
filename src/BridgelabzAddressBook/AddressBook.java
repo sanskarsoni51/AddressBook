@@ -21,7 +21,7 @@ public class AddressBook extends CRUD {
         boolean loop = true;
         while (loop) {
             System.out.println("1.Add a Address Book\n2.View a Address Book\n3.Edit a Address Book\n"
-                    + "4.delete a Address Book\n 5.Exit");
+                    + "4.delete a Address Book\n5.Search Contacts by City \n6.Exit");
             int option1 = s.nextInt();
 
             switch (option1) {
@@ -63,7 +63,18 @@ public class AddressBook extends CRUD {
                     AddressBookByName.remove(Name);
                     break;
 
-                case 5:
+//                case 5:
+//                    Scanner c = new Scanner(System.in);
+//                    System.out.println("Enter City to Search");
+//                    Name = c.nextLine();
+//                    List<Contacts> l1 = SearchByCity(Name);
+//                    for (Contacts contacts: l1 ) {
+//                        System.out.println(contacts.getFirstName() + " " + contacts.getLastName() + " " + contacts.getAddress()
+//                                + " " + contacts.getCity() + " " + contacts.getState() + " " + contacts.getZipcode() + " "
+//                                + contacts.getPhoneNumber() + " " + contacts.getEmail());
+//                    }
+
+                case 6:
                     loop = false;
                     break;
 
