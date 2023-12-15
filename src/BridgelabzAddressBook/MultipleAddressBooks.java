@@ -3,6 +3,7 @@ package BridgelabzAddressBook;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class MultipleAddressBooks {
 /*    Using map to store multiple address books with name(unique) as the key*/
@@ -18,6 +19,15 @@ public class MultipleAddressBooks {
                         + " " + contacts.getCity() + " " + contacts.getState() + " " + contacts.getZipcode() + " "
                         + contacts.getPhoneNumber() + " " + contacts.getEmail());
             }
+    }
+
+    public static List<Contacts> SearchByCity(String City){
+        List<Contacts> l1 = new ArrayList<>();
+        for(String i : AddressBookByName.keySet()){
+            ArrayList<Contacts> temp = AddressBookByName.get(i);
+            l1.addAll(temp.stream().filter(contacts -> contacts.getCity().equals(City)).collect(Collectors.toList()));
+        }
+        return l1;
     }
 
 

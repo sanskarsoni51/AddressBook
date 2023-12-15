@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import static BridgelabzAddressBook.MultipleAddressBooks.AddressBookByName;
+import static BridgelabzAddressBook.MultipleAddressBooks.SearchByCity;
 
 public class AddressBook extends CRUD {
 
@@ -63,16 +64,17 @@ public class AddressBook extends CRUD {
                     AddressBookByName.remove(Name);
                     break;
 
-//                case 5:
-//                    Scanner c = new Scanner(System.in);
-//                    System.out.println("Enter City to Search");
-//                    Name = c.nextLine();
-//                    List<Contacts> l1 = SearchByCity(Name);
-//                    for (Contacts contacts: l1 ) {
-//                        System.out.println(contacts.getFirstName() + " " + contacts.getLastName() + " " + contacts.getAddress()
-//                                + " " + contacts.getCity() + " " + contacts.getState() + " " + contacts.getZipcode() + " "
-//                                + contacts.getPhoneNumber() + " " + contacts.getEmail());
-//                    }
+                case 5:
+                    Scanner c = new Scanner(System.in);
+                    System.out.println("Enter City to Search");
+                    Name = c.nextLine();
+                    List<Contacts> l1 = SearchByCity(Name);
+                    for (Contacts contacts: l1 ) {
+                        System.out.println(contacts.getFirstName() + " " + contacts.getLastName() + " " + contacts.getAddress()
+                                + " " + contacts.getCity() + " " + contacts.getState() + " " + contacts.getZipcode() + " "
+                                + contacts.getPhoneNumber() + " " + contacts.getEmail());
+                    }
+                    break;
 
                 case 6:
                     loop = false;

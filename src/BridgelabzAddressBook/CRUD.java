@@ -222,10 +222,4 @@ public class CRUD {
 //        Contactlist.clear();
     }
 
-//    public static List<Contacts> SearchByCity(String City){
-//        for (:) {
-//
-//        }
-//        return Contactlist.stream().filter(contacts -> contacts.getCity().equals(City)).collect(Collectors.toList());
-//    }
 }
