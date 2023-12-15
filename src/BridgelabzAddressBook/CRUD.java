@@ -8,8 +8,9 @@ import java.util.Scanner;
 import static BridgelabzAddressBook.MultipleAddressBooks.AddressBookByName;
 
 public class CRUD {
+
     // creating a list to store the contact details of a person
-    private static List<Contacts> Contactlist = new ArrayList<>();
+    private static ArrayList<Contacts> Contactlist = new ArrayList<>();
 
 /*     addContactsFromUserInput To take a user input for contacts.
      @DESC :-Created a void function which helps us in taking input details from the user.*/
@@ -46,17 +47,20 @@ public class CRUD {
 
     //@DESC: addContacts method to add the items in the arraylist.
     private void addContacts(Contacts contacts) {
-        Contactlist.add(contacts);
+        if(Contactlist.stream().anyMatch(contacts1 -> (contacts1.getFirstName().equals(contacts.getFirstName()) && contacts1.getLastName().equals(contacts.getLastName()))))
+            System.out.println("Cannot add same person in the book");
+        else
+            Contactlist.add(contacts);
     }
 
 /*    @DESC: it is a void function which is created to modify the contact details
     @PARAMS: first name and last name are taken as params
     @RETURN: it does not return anything. it just updates the details   */
-    public static void modifyContactByName(String firstName, String lastName) {
+    public static void modifyContactByName(String firstName, String lastName,List<Contacts> list) {
         Scanner scanner = new Scanner(System.in);
         Scanner sc = new Scanner(System.in);
         int option;
-        for (Contacts contact : Contactlist) {
+        for (Contacts contact : list) {
             //It will check for valid firstname and lastname
             if (contact.getFirstName().equals(firstName) && contact.getLastName().equals(lastName)) {
                 System.out.println("1.Edit first name\n2.Edit last name\n"
@@ -152,8 +156,10 @@ public class CRUD {
 
     public static void setContactList(String AddressBookName) {
         Scanner s = new Scanner(System.in);
+
         //    We are creating an object of the AddressBook class
         AddressBook s1 = new AddressBook();
+//        Contactlist.clear();
         boolean b = true;
         int option;
 
@@ -170,7 +176,7 @@ public class CRUD {
                     //Called a method addContactsFromUserInput
                     s1.addContactsFromUserInput();
                     //called a method showContacts
-                    s1.showContacts();
+//                    s1.showContacts();
                     break;
 
                 case 2:
@@ -181,7 +187,7 @@ public class CRUD {
 
                     String lastName = scanner.nextLine();
                     //called a method modifyContacts
-                    s1.modifyContactByName(firstName, lastName);
+                    s1.modifyContactByName(firstName, lastName,Contactlist);
                     break;
 
                 case 3:
@@ -205,10 +211,13 @@ public class CRUD {
                     break;
             }
         }
+//        s1.setList(Contactlist);
+//        s1 = new AddressBook(Contactlist);
 //        Adding address book to the map(with each book having unique name)
-        AddressBookByName.put(AddressBookName, s1);
+        AddressBookByName.put(AddressBookName,Contactlist);
 //        Printing address book by name
         MultipleAddressBooks.ShowAddressBookByName(AddressBookName);
         System.out.println("Out of Address book");
+//        Contactlist.clear();
     }
 }
