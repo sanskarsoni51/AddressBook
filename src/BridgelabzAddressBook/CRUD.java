@@ -212,14 +212,12 @@ public class CRUD {
                     break;
             }
         }
-//        s1.setList(Contactlist);
-//        s1 = new AddressBook(Contactlist);
 //        Adding address book to the map(with each book having unique name)
         AddressBookByName.put(AddressBookName,Contactlist);
 //        Printing address book by name
         MultipleAddressBooks.ShowAddressBookByName(AddressBookName);
         System.out.println("Out of Address book");
-//        Contactlist.clear();
+
     }
 
 }
