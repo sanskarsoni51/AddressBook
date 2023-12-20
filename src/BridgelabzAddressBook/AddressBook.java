@@ -21,7 +21,7 @@ public class AddressBook extends CRUD {
         boolean loop = true;
         while (loop) {
             System.out.println("1.Add a Address Book\n2.View a Address Book\n3.Edit a Address Book\n"
-                    + "4.delete a Address Book\n5.Search Contacts by City\n6.Count Contacts by City\n7.Exit");
+                    + "4.delete a Address Book\n5.Search Contacts by City\n6.Count Contacts by City\n7.Sort Contacts By Name\n8.Exit");
             int option1 = s.nextInt();
 
             switch (option1) {
@@ -84,12 +84,15 @@ public class AddressBook extends CRUD {
                     break;
 
                 case 7:
+                    MultipleAddressBooks.SortByName();
+
+
+                case 8:
                     loop = false;
                     break;
 
                 default:
                     System.out.println("Please provide correct option");
-                    loop = false;
                     break;
             }
         }

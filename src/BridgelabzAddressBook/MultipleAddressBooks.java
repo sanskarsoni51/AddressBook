@@ -1,6 +1,7 @@
 package BridgelabzAddressBook;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -36,6 +37,19 @@ public class MultipleAddressBooks {
             count = count + temp.stream().filter(contacts -> contacts.getCity().equals(City)).count();
         }
         return count;
+    }
+    /*
+     *@Desc:  Sort the all the record based on the first name of the person  .
+     * @sortByName is a city name to display a sorted records.
+     */
+    public static void SortByName() {
+        AddressBookByName.entrySet().stream()
+                .flatMap(entry -> entry.getValue().stream())
+                .sorted(Comparator.comparing(Contacts::getFirstName))
+                .forEach(contact -> {
+                    System.out.println("Sorted record with persons first name: " + contact);
+                });
+
     }
 
 
