@@ -49,7 +49,12 @@ public class MultipleAddressBooks {
                 .forEach(contact -> {
                     System.out.println("Sorted record with persons first name: " + contact);
                 });
-
+    }
+    public static void SortByCity()
+    {
+        AddressBookByName.entrySet().stream().flatMap(entry->entry.getValue().stream()).sorted(Comparator.comparing(Contacts::getCity)).forEach(contacts -> {
+            System.out.println(" Sorted record with the city and state name " +contacts);
+        });
     }
 
 
